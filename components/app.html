@@ -1,0 +1,25 @@
+<app>
+    <navigation views={views}></navigation>
+    <main data-is={view}></main>
+    <script>
+        import './navigation.html'
+
+        this.views = {
+            index : {title:'App'},
+            example : {title:'EXAMPLE'},
+        }
+        this.view = 'index'
+
+        riot.route('/*', (item) => {
+            if (!!~Object.keys(this.views).indexOf(item)) {
+                this.view = item
+                require(`./views/${item}.html`)
+                riot.route(`/${this.view}`)
+                riot.mount(item, this.views[item])
+                this.update()
+            }
+        })
+        riot.route.start(true)
+        riot.route(`/${this.view}`)
+    </script>
+</app>

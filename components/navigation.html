@@ -1,0 +1,15 @@
+<navigation>
+    <nav>
+        <a each={key, view in opts.views} href="#/{key}">{view.title}</a>
+    </nav>
+    <style scoped>
+        :scope {
+            display: block;
+        }
+        nav a {
+            display: inline-block;
+            padding: .5em;
+            background: hsl(210, 50%, 75%);
+        }
+    </style>
+</navigation>
