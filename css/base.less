@@ -1,0 +1,236 @@
+/* ========================================
+BASE
+* Contains HTML default elements (b,i,u,table...)
+* Does not contain classes, ids
+* Can implement mixins
+======================================== */
+
+*
+{
+    box-sizing: border-box;
+}
+
+/*  ========================================
+    BLOCK ELEMENTS
+    ======================================== */
+
+.text() {
+    font-family: @font-body;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 1.5em; // 24px / 150%
+    color: @color-light;
+    @media screen and (max-width: @breakpoint-sm) {
+        font-size: 13px;
+    }
+    @media screen and (max-width: @breakpoint-md) {
+        font-size: 14px;
+    }
+}
+
+body, html
+{
+    -webkit-font-smoothing: normal;
+    background-color: @color-secondary-dark;
+    min-width: 320px;
+    .text();
+    margin: 0;
+    padding: 0;
+
+}
+
+dl, dd, dt {
+    margin: 0;
+}
+
+dt {
+    margin-bottom: 1em;
+}
+
+dd {
+    margin-bottom: 4em;
+}
+
+table {
+    margin: 1em 0 @indent-large 0;
+    border-spacing: 0;
+    width: 100%;
+
+    thead {
+        background: @color-light-darkened;
+    }
+
+    th {
+        font-family: @font-body, sans-serif;
+        font-weight: normal;
+        text-align: left;
+        background: @color-light-darkened;
+        vertical-align: top;
+    }
+
+    tr {
+        th,
+        td {
+            line-height: 1.5;
+            vertical-align: top;
+            padding: .75em .75em .5em .5em;
+            border-bottom: 1px solid darken(@color-light, 10%);
+        }
+    }
+}
+
+blockquote {
+
+    border-left: @gutter solid @color-secondary;
+    font-style: italic;
+    padding-left: 1em;
+    margin: 1em 0;
+    padding: .5em;
+    color: #8c8785;
+    p {
+        &:first-child,
+        &:last-child {
+            margin: 0;
+        }
+    }
+    cite {
+        display: block;
+        font-style: normal;
+    }
+}
+
+/*  ========================================
+    TEXTUAL/CONTENT ELEMENTS
+    ======================================== */
+
+hr {
+    margin: 1em 0;
+    border: none;
+    width: 100%;
+    height: .1rem;
+    background-color: lighten(@color-dark, 50%);
+}
+
+p {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1em;
+    line-height: 1.5em;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+a, .anchor {
+    position: relative;
+    color: @color-secondary;
+    text-decoration: none;
+    transition: all @duration-link ease;
+    cursor: pointer;
+    outline: 0;
+    &:hover {
+        color: @color-secondary;
+    }
+
+    img
+    {
+        border: none;
+        outline: none;
+    }
+
+    p,
+    span
+    {
+        cursor: pointer;
+    }
+}
+
+img
+{
+    max-width: 100%;
+    &.border, &.circle {
+        border: 1px solid @color-dark-shadow-faded;
+        border-radius: .5em;
+    }
+    &.circle {
+        border-radius: 100%;
+    }
+    &[align="right"], &[align="left"] {
+        @media screen and (max-width: @breakpoint-md) {
+            height: auto;
+            max-width: 50%;
+        }
+    }
+}
+
+ul
+{
+    list-style: square;
+}
+
+ul,ol
+{
+    padding: 0 0 0 1.15em;
+}
+
+ol
+{
+    list-style-type: decimal;
+    ol {
+        list-style-type: lower-alpha;
+    }
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    margin: 1em 0;
+    line-height: 1.25em;
+    text-transform: uppercase;
+    font-family: @font-heading;
+    font-weight: 400;
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+h1,h2 {
+    clear: both;
+}
+
+h1
+{
+    font-size: 2.5em;
+    line-height: 36px;
+    text-transform: uppercase;
+    color: @color-light;
+}
+
+h2 {
+    color: @color-secondary;
+    font-size: 1.5em;
+}
+
+h3 {
+    font-size: 1.375em;
+    line-height: 1.4;
+    font-weight: 400;
+    font-family: @font-heading;
+    color: @color-secondary;
+}
+
+h4 {
+    font-size: 1.15em;
+    font-family: @font-heading, sans-serif;
+    color: @color-secondary;
+}
+
+
+/*  ========================================
+    FORM ELEMENTS
+    ======================================== */
+
+fieldset
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
