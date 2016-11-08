@@ -1,5 +1,4 @@
 var webpack = require('webpack')
-var autoprefixer = require('autoprefixer')
 
 module.exports = {
     entry: './index.js',
@@ -11,25 +10,23 @@ module.exports = {
     module: {
         preLoaders: [
             { test: /\.html$/, loader: 'riotjs' },
-            { test: /\.js$/, loader: 'eslint!source-map' },
+            { test: /\.js$/, loader: 'source-map' },
         ],
         loaders: [
-            { test: /\.md$/, loader: 'html!markdown'},
             { test: /\.(jpe?g|png|gif|svg|mp4)$/i, loader: 'file'},
             { test: /\.html$|\.js$/, loader: 'babel', query: { presets: 'es2015-riot' }},
             { test: /\.less$/, loader: 'style!css?minimize!postcss!less'},
         ]
     },
-    postcss: () => {
-        return [
-            autoprefixer({browsers: 'last 2 versions'})
-        ];
-    },
     plugins: [
         new webpack.ProvidePlugin({
             riot: 'riot'
-        })
+        }),
     ],
+    devServer: {
+        port: 8080,
+        inline: true
+    },
     eslint: {
         configFile: './.eslintrc'
     },
