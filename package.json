@@ -52,7 +52,7 @@
   },
   "dependencies": {
     "animate.css": "^3.5.1",
-    "normalize.css": "^4.1.1",
+    "normalize.css": "^4.2.0",
     "prismjs": "^1.5.1",
     "riot": "^2.4.1",
     "riot-route": "^2.4.0"
