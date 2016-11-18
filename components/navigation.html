@@ -1,6 +1,6 @@
 <navigation>
     <nav>
-        <a each={key, view in opts.views} href="#/{key}">{view.title}</a>
+        <a each={key, view in opts.views} class={active:opts.view==view} href="#/{key}">{view.title}</a>
     </nav>
     <style type="less" scoped>
         @import "css/variables.less";

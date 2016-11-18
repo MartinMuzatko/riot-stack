@@ -1,6 +1,6 @@
 <app>
-    <navigation views={views}></navigation>
-    <main data-is={view}></main>
+    <navigation views={views} view={view}></navigation>
+    <main id="mountpoint"></main>
     <script>
         import './navigation.html'
 
@@ -19,16 +19,19 @@
                 try {
                     require(`./views/${item}.html`)
                     this.view = item
+                    var view = riot.mount(this.mountpoint, item, this.views[item])[0]
+                    this.tags[item] = view
+                    extend(view.opts, {views : this.views})
+                    view.parent = this
+                    this.update()
                 } catch (e) {
-                     console.log(e);
+                    console.warn(e);
                 }
-
-                riot.route(`/${this.view}`)
-                riot.mount(item, this.views[item])
-                this.update()
             }
         })
-        riot.route.start(true)
-        riot.route(`/${this.view}`)
+        this.on('mount', () => {
+            riot.route.start(true)
+            riot.route(`/${this.view}`)
+        })
     </script>
 </app>
